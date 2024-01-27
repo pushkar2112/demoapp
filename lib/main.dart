@@ -1,9 +1,12 @@
+import "package:email_validator/email_validator.dart";
 import "package:flutter/material.dart";
+
+import "login_page.dart";
 
 void main() {
   runApp(MaterialApp(
     title: "My nth App",
-    home: HomePage(),
+    home: LoginPage(),
   ));
 }
 
@@ -15,6 +18,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _controller = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepOrange,
@@ -29,11 +34,57 @@ class HomePage extends StatelessWidget {
         ),
         Image.network("https://cdn.pixabay.com/photo/2023/12/07/22/24/cherry-blossoms-8436420_1280.jpg"),
         Text("Hello"),
-        TextField(),
+        TextField(
+          controller: _controller,
+        ),
         ElevatedButton(onPressed: (){
-          print('Button Clicked');
+          print(_controller.text);
         }, child: Text("Click Me"))
       ]),
     );
   }
 }
+
+// class LoginPage extends StatelessWidget {
+//   const LoginPage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+
+//     final TextEditingController _controller = TextEditingController();
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Login Page"),
+//       ),
+//       body: Column(children: [
+//         Container(
+//           height: 200,
+//         ),
+//         Text("Email"),
+//         TextField(
+//           controller: _controller,
+//         ),
+//         Container(
+//           height: 30,
+//         ),
+//         Text("Password"),
+//         TextField(
+//           //Password Field
+//         ),
+//         Container(
+//           height: 80,
+//         ),
+//         ElevatedButton(onPressed: (){
+//           String email = _controller.text;
+//           final bool isValid = EmailValidator.validate(email);
+//           if (condition) {
+            
+//           }
+//         }, child: Text("Submit"))
+//       ],)
+//     );
+//   }
+// }
+
+
