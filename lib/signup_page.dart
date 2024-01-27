@@ -1,4 +1,3 @@
-import 'package:demoapp/signup_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -18,23 +17,23 @@ bool validateForm(){
   }
 }
 
-bool loginFunc(){
+bool signupFunc(){
   if (validateForm()) {
-    print("Login Success");
+    print("Sign Up Success");
     return true;
   } else {
     return false;
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login", style: TextStyle(color: Colors.white),),
+        title: Text("Sign Up", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         backgroundColor: Colors.black,
       ),
@@ -68,21 +67,18 @@ class LoginPage extends StatelessWidget {
               height: 30,
             ),
             ElevatedButton(onPressed: (){
-              loginFunc();
-            }, child: Text("Login Now")),
+              signupFunc();
+            }, child: Text("Sign Up Now")),
             Container(
               height: 30,
             ),
-            Text("Don't have an account?", textAlign: TextAlign.center),
-            ElevatedButton(onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignupPage()),
-              );
-            }, 
-            child: Text("Sign Up"),
-            style: ButtonStyle(
-              elevation: MaterialStatePropertyAll(0)),
+            Text("Already have an account?", textAlign: TextAlign.center),
+              ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+              }, 
+              child: Text("Login"),
+              style: ButtonStyle(
+                elevation: MaterialStatePropertyAll(0)),
             )
           ],
         ),
